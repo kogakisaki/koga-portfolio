@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Koga's Profile</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="color-picker">
+      <button class="color-toggle" onclick="toggleColorPicker()">
+        <i class="fas fa-palette"></i>
+      </button>
+      <div class="color-options" id="colorOptions"></div>
+    </div>
+
+    <div class="container">
+      <header class="profile-header">
+        <img id="profile-img" alt="Profile" class="profile-img" />
+        <h1 class="title">
+          <div class="name-container">
+            <span class="greeting"></span>
+            <span class="name"></span>
+          </div>
+        </h1>
+        <p id="basic-info"></p>
+      </header>
+
+      <section class="section">
+        <h2>Bio</h2>
+        <p id="bio"></p>
+      </section>
+
+      <section class="section">
+        <h2>Hobbies</h2>
+        <ul id="hobbies-list" class="styled-list"></ul>
+      </section>
+
+      <section class="section">
+        <h2>Programming Languages</h2>
+        <div id="languages" class="languages"></div>
+      </section>
+
+      <section class="section">
+        <h2>Projects</h2>
+        <div id="projects" class="projects"></div>
+      </section>
+
+      <section class="section">
+        <h2>Contact</h2>
+        <div id="contacts" class="contact-links"></div>
+      </section>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
