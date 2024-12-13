@@ -52,10 +52,10 @@ A sleek, responsive personal portfolio website featuring dynamic theme switching
 - [x] Create skills progress bars
 - [x] Add animation for theme toggle
 - [x] Create presets for language/framework icons
+- [x] Add more color theme presets
 
 ### In Progress 🚧
 
-- [ ] Add more color theme presets
 - [ ] Implement smooth scrolling
 - [ ] Add print-friendly styling
 - [ ] Create customizable typing animation settings
