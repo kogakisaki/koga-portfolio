@@ -53,6 +53,7 @@ A sleek, responsive personal portfolio website featuring dynamic theme switching
 - [x] Add animation for theme toggle
 - [x] Create presets for language/framework icons
 - [x] Add more color theme presets
+- [x] Implement smooth scrolling
 
 ### In Progress 🚧
 

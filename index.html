@@ -13,6 +13,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
     />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .section h2 a {
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
     <div class="theme-controls">
@@ -39,28 +48,28 @@
         <p id="basic-info"></p>
       </header>
 
-      <section class="section">
-        <h2>Bio</h2>
+      <section class="section" id="bio-section">
+        <h2><a href="#bio-section">Bio</a></h2>
         <p id="bio"></p>
       </section>
 
-      <section class="section">
-        <h2>Hobbies</h2>
+      <section class="section" id="hobbies-section">
+        <h2><a href="#hobbies-section">Hobbies</a></h2>
         <ul id="hobbies-list" class="styled-list"></ul>
       </section>
 
-      <section class="section">
-        <h2>Programming Languages</h2>
+      <section class="section" id="languages-section">
+        <h2><a href="#languages-section">Programming Languages</a></h2>
         <div id="languages" class="languages"></div>
       </section>
 
-      <section class="section">
-        <h2>Projects</h2>
+      <section class="section" id="projects-section">
+        <h2><a href="#projects-section">Projects</a></h2>
         <div id="projects" class="projects"></div>
       </section>
 
-      <section class="section">
-        <h2>Contact</h2>
+      <section class="section" id="contact-section">
+        <h2><a href="#contact-section">Contact</a></h2>
         <div id="contacts" class="contact-links"></div>
       </section>
     </div>
