@@ -43,25 +43,16 @@ const CONFIG = {
       icon: "fas fa-globe",
       links: {
         github: "https://github.com/kogakisaki/koga-portfolio",
-        demo: "https://portfolio-demo.com",
+        demo: "https://koga-portfolio.on-fleek.app/",
       },
     },
     {
-      name: "Task Manager",
-      description: "A full-stack task management application",
-      icon: "fas fa-tasks",
+      name: "Koga-2048",
+      description: "A modern web implementation of the classic 2048 game with additional features like custom board sizes, dark theme, and game sharing capabilities.",
+      icon: "fa-solid fa-square-full",
       links: {
-        github: "https://github.com/username/task-manager",
-        demo: "https://task-manager-demo.com",
-      },
-    },
-    {
-      name: "Chat App",
-      description: "Real-time chat application using WebSocket",
-      icon: "fas fa-comments",
-      links: {
-        github: "https://github.com/username/chat-app",
-        demo: "https://chat-app-demo.com",
+        github: "https://github.com/kogakisaki/koga-2048",
+        demo: "https://huggingface.co/spaces/eienmojiki/2048",
       },
     },
   ],

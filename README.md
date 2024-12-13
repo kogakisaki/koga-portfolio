@@ -1,28 +1,32 @@
-# 🌟 Modern Portfolio Page
+<h1 align="center">🌟 Modern Portfolio Page</h1>
 
 A sleek, responsive personal portfolio website featuring dynamic theme switching, smooth animations, and fully customizable content through a simple configuration file.
 
 ## ✨ Features
 
 - 🎨 Dynamic Theme Switching
+
   - Light/Dark mode
   - System preference detection
   - Theme persistence
   - Custom color palettes
 
 - 💫 Animations
+
   - Smooth typing effect
   - Fade-in sections
   - Interactive hover effects
   - Seamless transitions
 
 - 📱 Responsive Design
+
   - Mobile-first approach
   - Fluid layouts
   - Optimized for all devices
   - Consistent experience
 
 - ⚙️ Easy Configuration
+
   - Simple config file
   - No coding required
   - Instant updates
@@ -124,11 +128,11 @@ theme: {
 languages: [
   {
     name: "JavaScript",
-    icon: "fab fa-js",      // FontAwesome icon class
-    proficiency: 90         // Percentage (0-100)
+    icon: "fab fa-js", // FontAwesome icon class
+    proficiency: 90, // Percentage (0-100)
   },
   // Add more languages/skills
-]
+];
 ```
 
 ### Projects Showcase
@@ -141,11 +145,11 @@ projects: [
     icon: "fas fa-project-diagram",
     links: {
       github: "https://github.com/username/project",
-      demo: "https://demo-url.com"
-    }
-  }
+      demo: "https://demo-url.com",
+    },
+  },
   // Add more projects
-]
+];
 ```
 
 ### Contact Links
@@ -155,15 +159,15 @@ contacts: [
   {
     platform: "GitHub",
     icon: "fab fa-github",
-    link: "https://github.com/username"
+    link: "https://github.com/username",
   },
   {
     platform: "LinkedIn",
     icon: "fab fa-linkedin",
-    link: "https://linkedin.com/in/username"
-  }
+    link: "https://linkedin.com/in/username",
+  },
   // and more...
-]
+];
 ```
 
 ## 🎨 Customization Guide
@@ -176,13 +180,13 @@ Add new colors to your theme configuration:
 colors: [
   {
     name: "Custom Purple",
-    value: "#9C27B0"
+    value: "#9C27B0",
   },
   {
     name: "Ocean Blue",
-    value: "#03A9F4"
-  }
-]
+    value: "#03A9F4",
+  },
+];
 ```
 
 ### Image Guidelines

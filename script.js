@@ -1,3 +1,42 @@
+function setPageIcon() {
+  // Create a canvas element
+  const canvas = document.createElement("canvas");
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext("2d");
+
+  // Create a temporary image to load the avatar
+  const img = new Image();
+  img.crossOrigin = "anonymous"; // Enable cross-origin image loading
+  img.src = CONFIG.profile.image.url;
+
+  img.onload = function () {
+    // Draw circular clipping path
+    ctx.beginPath();
+    ctx.arc(32, 32, 32, 0, Math.PI * 2, true);
+    ctx.closePath();
+    ctx.clip();
+
+    // Draw the image
+    ctx.drawImage(img, 0, 0, 64, 64);
+
+    // Create favicon link element
+    const link = document.createElement("link");
+    link.type = "image/x-icon";
+    link.rel = "shortcut icon";
+    link.href = canvas.toDataURL();
+
+    // Remove existing favicon
+    const existingFavicon = document.querySelector('link[rel="shortcut icon"]');
+    if (existingFavicon) {
+      document.head.removeChild(existingFavicon);
+    }
+
+    // Add new favicon
+    document.head.appendChild(link);
+  };
+}
+
 function toggleTheme() {
   const isDarkTheme = document.body.classList.contains("dark-theme");
   const icon = document.querySelector(".theme-toggle i");
@@ -187,6 +226,7 @@ function init() {
   initTheme();
   initProfile();
   initColorPicker();
+  setPageIcon();
 
   document.addEventListener("click", (e) => {
     const colorPicker = document.querySelector(".color-picker");
