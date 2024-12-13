@@ -60,17 +60,12 @@ const CONFIG = {
     {
       platform: "Facebook",
       icon: "fab fa-facebook",
-      link: "https://facebook.com/username",
+      link: "https://facebook.com/kisaki.koga",
     },
     {
       platform: "Email",
       icon: "fas fa-envelope",
-      link: "mailto:email@example.com",
-    },
-    {
-      platform: "Phone",
-      icon: "fas fa-phone",
-      link: "tel:+1234567890",
+      link: "mailto:kisakikoga.1210@gmail.com",
     },
   ],
   theme: {
