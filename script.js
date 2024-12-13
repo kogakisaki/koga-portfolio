@@ -1,18 +1,14 @@
-// Main initialization and functionality for the portfolio website
 document.addEventListener("DOMContentLoaded", init);
-window.addEventListener("load", setPageIcon);
 
-// Initialize all website components
 function init() {
   initTheme();
   initProfile();
   initColorPicker();
-  initPageIcon();
   initEventListeners();
+  setPageIcon();
 }
 
-// Set circular page icon from profile image
-function initPageIcon() {
+function setPageIcon() {
   const canvas = document.createElement("canvas");
   canvas.width = 64;
   canvas.height = 64;
@@ -23,22 +19,17 @@ function initPageIcon() {
   img.src = CONFIG.profile.image.url;
 
   img.onload = function () {
-    // Create circular clipping path
     ctx.beginPath();
     ctx.arc(32, 32, 32, 0, Math.PI * 2, true);
     ctx.closePath();
     ctx.clip();
-
-    // Draw the image
     ctx.drawImage(img, 0, 0, 64, 64);
 
-    // Set as favicon
     const link = document.createElement("link");
     link.type = "image/x-icon";
     link.rel = "shortcut icon";
     link.href = canvas.toDataURL();
 
-    // Replace existing favicon if present
     const existingFavicon = document.querySelector('link[rel="shortcut icon"]');
     if (existingFavicon) {
       document.head.removeChild(existingFavicon);
@@ -47,57 +38,36 @@ function initPageIcon() {
   };
 }
 
-// Theme toggling functionality
+// Toggle between light and dark themes
 function toggleTheme() {
   const isDarkTheme = document.body.classList.contains("dark-theme");
   const icon = document.querySelector(".theme-toggle i");
-  const button = document.querySelector(".theme-toggle");
 
-  button.classList.add("animate");
-
-  setTimeout(() => {
-    if (isDarkTheme) {
-      document.body.classList.remove("dark-theme");
-      icon.classList.replace("fa-sun", "fa-moon");
-      localStorage.setItem("dark-theme", "false");
-    } else {
-      document.body.classList.add("dark-theme");
-      icon.classList.replace("fa-moon", "fa-sun");
-      localStorage.setItem("dark-theme", "true");
-    }
-    button.classList.remove("animate");
-  }, 300);
+  if (isDarkTheme) {
+    document.body.classList.remove("dark-theme");
+    icon.classList.replace("fa-sun", "fa-moon");
+    localStorage.setItem("dark-theme", "false");
+  } else {
+    document.body.classList.add("dark-theme");
+    icon.classList.replace("fa-moon", "fa-sun");
+    localStorage.setItem("dark-theme", "true");
+  }
 }
 
-// Color picker functionality
+// Show or hide the color picker
 function toggleColorPicker() {
   document.getElementById("colorOptions").classList.toggle("show");
 }
 
-// Set main theme color
-function setMainColor(color) {
-  document.documentElement.style.setProperty("--primary-color", color);
-  localStorage.setItem("primary-color", color);
-
-  // Update active state of color options
-  document.querySelectorAll(".color-option").forEach((option) => {
-    option.classList.remove("active");
-    if (option.dataset.color === color) {
-      option.classList.add("active");
-    }
-  });
-}
-
-// Initialize color picker
+// Initialize color picker with available colors
 function initColorPicker() {
   const colorOptions = document.getElementById("colorOptions");
 
   CONFIG.theme.colors.forEach((color) => {
     const colorOption = document.createElement("div");
     colorOption.className = "color-option";
-    colorOption.style.backgroundColor = color.value;
-    colorOption.dataset.color = color.value;
-    colorOption.title = color.name;
+    colorOption.dataset.name = color.name;
+    colorOption.style.setProperty("--color-value", color.value);
     colorOption.onclick = () => setMainColor(color.value);
 
     if (color.value === CONFIG.theme.defaultColor) {
@@ -107,7 +77,6 @@ function initColorPicker() {
     colorOptions.appendChild(colorOption);
   });
 
-  // Load saved color preference
   const savedColor = localStorage.getItem("primary-color");
   if (savedColor) {
     setMainColor(savedColor);
@@ -116,51 +85,29 @@ function initColorPicker() {
   }
 }
 
-// Typing animation implementation
-async function typeText(element, text, speed = CONFIG.typing.speed) {
-  const greetingElement = document.querySelector(".greeting");
-  element.textContent = "";
-  greetingElement.style.marginRight = "0.5rem";
+// Set the main color theme
+function setMainColor(color) {
+  document.documentElement.style.setProperty("--primary-color", color);
+  localStorage.setItem("primary-color", color);
 
-  // Type text character by character
-  for (let char of text) {
-    element.textContent += char;
-    await new Promise((resolve) => setTimeout(resolve, speed));
-  }
-
-  // Pause at end of text
-  await new Promise((resolve) =>
-    setTimeout(resolve, CONFIG.typing.pauseDuration)
-  );
-
-  // Delete text character by character
-  while (element.textContent.length > 0) {
-    element.textContent = element.textContent.slice(0, -1);
-    await new Promise((resolve) =>
-      setTimeout(resolve, CONFIG.typing.deleteSpeed)
-    );
-  }
-
-  // Pause before restarting
-  await new Promise((resolve) => setTimeout(resolve, CONFIG.typing.startDelay));
-
-  // Restart animation
-  typeText(element, text, speed);
+  document.querySelectorAll(".color-option").forEach((option) => {
+    option.classList.remove("active");
+    if (option.style.getPropertyValue("--color-value") === color) {
+      option.classList.add("active");
+    }
+  });
 }
 
-// Initialize profile section
+// Initialize profile details
 function initProfile() {
-  // Set profile image
   const profileImg = document.getElementById("profile-img");
   profileImg.src = CONFIG.profile.image.url;
   profileImg.style.width = `${CONFIG.profile.image.size}px`;
   profileImg.style.height = `${CONFIG.profile.image.size}px`;
 
-  // Set greeting and start name animation
   document.querySelector(".greeting").textContent = CONFIG.profile.greeting;
   typeText(document.querySelector(".name"), CONFIG.profile.name);
 
-  // Set basic info and bio
   document.getElementById(
     "basic-info"
   ).textContent = `${CONFIG.profile.age} years old • ${CONFIG.profile.location}`;
@@ -172,7 +119,27 @@ function initProfile() {
   initContacts();
 }
 
-// Initialize hobbies section
+// Typing effect for the name
+async function typeText(element, text, speed = CONFIG.typing.speed) {
+  element.textContent = "";
+  for (let char of text) {
+    element.textContent += char;
+    await new Promise((resolve) => setTimeout(resolve, speed));
+  }
+  await new Promise((resolve) =>
+    setTimeout(resolve, CONFIG.typing.pauseDuration)
+  );
+  while (element.textContent.length > 0) {
+    element.textContent = element.textContent.slice(0, -1);
+    await new Promise((resolve) =>
+      setTimeout(resolve, CONFIG.typing.deleteSpeed)
+    );
+  }
+  await new Promise((resolve) => setTimeout(resolve, CONFIG.typing.startDelay));
+  typeText(element, text, speed);
+}
+
+// Initialize hobbies list
 function initHobbies() {
   const hobbiesList = document.getElementById("hobbies-list");
   CONFIG.hobbies.forEach((hobby) => {
@@ -182,7 +149,7 @@ function initHobbies() {
   });
 }
 
-// Initialize languages/skills section
+// Initialize programming languages/skills
 function initLanguages() {
   const languagesContainer = document.getElementById("languages");
   CONFIG.languages.forEach((lang) => {
@@ -203,7 +170,7 @@ function initLanguages() {
   });
 }
 
-// Initialize projects section
+// Initialize projects list
 function initProjects() {
   const projectsContainer = document.getElementById("projects");
   CONFIG.projects.forEach((project) => {
@@ -216,10 +183,14 @@ function initProjects() {
         ${project.techStack
           .map(
             (tech) => `
-          <span class="tech-item" 
-                data-name="${CONFIG.techIcons[tech].name}"
-                style="color: ${CONFIG.techIcons[tech].color}">
-            <i class="${CONFIG.techIcons[tech].icon}"></i>
+          <span class="tech-item" data-name="${
+            CONFIG.techIcons[tech]?.name || "Unknown"
+          }">
+            <i class="${
+              CONFIG.techIcons[tech]?.icon || "fas fa-code"
+            }" style="color: ${
+              CONFIG.techIcons[tech]?.color || "var(--primary-color)"
+            };"></i>
           </span>
         `
           )
@@ -238,7 +209,7 @@ function initProjects() {
   });
 }
 
-// Initialize contacts section
+// Initialize contact links
 function initContacts() {
   const contactsContainer = document.getElementById("contacts");
   CONFIG.contacts.forEach((contact) => {
@@ -252,7 +223,7 @@ function initContacts() {
   });
 }
 
-// Initialize theme preferences
+// Initialize theme based on user preference
 function initTheme() {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const savedTheme = localStorage.getItem("dark-theme");
@@ -269,9 +240,8 @@ function initTheme() {
   }
 }
 
-// Initialize event listeners
+// Event listeners for interactive features
 function initEventListeners() {
-  // Close color picker when clicking outside
   document.addEventListener("click", (e) => {
     const colorPicker = document.querySelector(".color-picker");
     const colorOptions = document.getElementById("colorOptions");
@@ -284,7 +254,6 @@ function initEventListeners() {
     }
   });
 
-  // Handle theme preference changes
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", (e) => {
@@ -302,14 +271,4 @@ function initEventListeners() {
         }
       }
     });
-
-  // Initialize smooth scrolling for all anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute("href")).scrollIntoView({
-        behavior: "smooth",
-      });
-    });
-  });
 }

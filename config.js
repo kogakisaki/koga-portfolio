@@ -249,25 +249,134 @@ const CONFIG = {
   theme: {
     // Available color themes
     colors: [
+      // Modern and Professional
       {
-        name: "Blue",
+        name: "Ocean Blue",
         value: "#2196f3",
+        shades: {
+          light: "#64b5f6",
+          dark: "#1976d2",
+        },
       },
       {
-        name: "Green",
+        name: "Material Green",
         value: "#4CAF50",
+        shades: {
+          light: "#81c784",
+          dark: "#388e3c",
+        },
       },
       {
-        name: "Purple",
+        name: "Royal Purple",
         value: "#9C27B0",
+        shades: {
+          light: "#ba68c8",
+          dark: "#7b1fa2",
+        },
+      },
+
+      // Vibrant and Creative
+      {
+        name: "Sunset Orange",
+        value: "#FF5722",
+        shades: {
+          light: "#ff7043",
+          dark: "#e64a19",
+        },
       },
       {
-        name: "Orange",
-        value: "#FF9800",
-      },
-      {
-        name: "Pink",
+        name: "Electric Pink",
         value: "#E91E63",
+        shades: {
+          light: "#f06292",
+          dark: "#c2185b",
+        },
+      },
+      {
+        name: "Cyber Yellow",
+        value: "#FFD700",
+        shades: {
+          light: "#ffd740",
+          dark: "#ffc400",
+        },
+      },
+
+      // Elegant and Subtle
+      {
+        name: "Teal",
+        value: "#009688",
+        shades: {
+          light: "#4db6ac",
+          dark: "#00796b",
+        },
+      },
+      {
+        name: "Deep Purple",
+        value: "#673AB7",
+        shades: {
+          light: "#9575cd",
+          dark: "#512da8",
+        },
+      },
+      {
+        name: "Rose Gold",
+        value: "#BD7F93",
+        shades: {
+          light: "#d1a3b1",
+          dark: "#a15d76",
+        },
+      },
+
+      // Modern Neutrals
+      {
+        name: "Graphite",
+        value: "#607D8B",
+        shades: {
+          light: "#90a4ae",
+          dark: "#455a64",
+        },
+      },
+      {
+        name: "Warm Grey",
+        value: "#795548",
+        shades: {
+          light: "#a1887f",
+          dark: "#5d4037",
+        },
+      },
+      {
+        name: "Navy",
+        value: "#1A237E",
+        shades: {
+          light: "#3949ab",
+          dark: "#121858",
+        },
+      },
+
+      // Nature Inspired
+      {
+        name: "Forest",
+        value: "#2E7D32",
+        shades: {
+          light: "#43a047",
+          dark: "#1b5e20",
+        },
+      },
+      {
+        name: "Autumn",
+        value: "#BF360C",
+        shades: {
+          light: "#e64a19",
+          dark: "#8c2808",
+        },
+      },
+      {
+        name: "Ocean",
+        value: "#0277BD",
+        shades: {
+          light: "#039be5",
+          dark: "#015384",
+        },
       },
     ],
     defaultColor: "#2196f3", // Default theme color
