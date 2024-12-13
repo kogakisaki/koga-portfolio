@@ -40,16 +40,26 @@ function setPageIcon() {
 function toggleTheme() {
   const isDarkTheme = document.body.classList.contains("dark-theme");
   const icon = document.querySelector(".theme-toggle i");
+  const button = document.querySelector(".theme-toggle");
 
-  if (isDarkTheme) {
-    document.body.classList.remove("dark-theme");
-    icon.classList.replace("fa-sun", "fa-moon");
-    localStorage.setItem("dark-theme", "false");
-  } else {
-    document.body.classList.add("dark-theme");
-    icon.classList.replace("fa-moon", "fa-sun");
-    localStorage.setItem("dark-theme", "true");
-  }
+  // Add animation class
+  button.classList.add("animate");
+
+  // Wait for animation to complete before changing theme
+  setTimeout(() => {
+    if (isDarkTheme) {
+      document.body.classList.remove("dark-theme");
+      icon.classList.replace("fa-sun", "fa-moon");
+      localStorage.setItem("dark-theme", "false");
+    } else {
+      document.body.classList.add("dark-theme");
+      icon.classList.replace("fa-moon", "fa-sun");
+      localStorage.setItem("dark-theme", "true");
+    }
+
+    // Remove animation class
+    button.classList.remove("animate");
+  }, 300);
 }
 
 function toggleColorPicker() {

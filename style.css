@@ -75,16 +75,17 @@ body {
   position: relative;
   display: inline-block;
   min-width: 0.125em;
+  padding-right: 0.15em;
   white-space: nowrap;
   line-height: normal;
   height: 100%;
-  padding-right: 0.2em;
+  margin-left: 0.1em;
 }
 
 .name::after {
   content: "|";
   position: absolute;
-  right: 0;
+  right: -0.1em;
   top: 50%;
   transform: translateY(-50%);
   color: var(--primary-color);
@@ -92,6 +93,11 @@ body {
   line-height: normal;
   font-weight: 300;
   font-size: 1.1em;
+  transition: right 0.1s ease;
+}
+
+.name:empty::after {
+  right: 0;
 }
 
 .theme-toggle,
@@ -110,20 +116,51 @@ body {
   z-index: 1100;
 }
 
-.theme-toggle i,
-.color-toggle i {
-  font-size: 1.2rem;
-}
-
-.theme-toggle:hover,
-.color-toggle:hover {
-  transform: scale(1.1);
-}
-
 .theme-toggle {
   position: fixed;
   top: 20px;
   right: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.theme-toggle i {
+  transform: scale(1);
+  transition: transform 0.5s ease;
+}
+
+.theme-toggle.animate i {
+  transform: rotate(360deg) scale(0);
+}
+
+.theme-toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+}
+
+.theme-toggle.animate::after {
+  transform: translate(-50%, -50%) scale(3);
+  opacity: 0;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.color-toggle i {
+  font-size: 1.2rem;
+}
+
+.color-toggle:hover {
+  transform: scale(1.1);
 }
 
 .color-picker {
