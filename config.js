@@ -9,7 +9,10 @@ const CONFIG = {
       size: 150, // Size in pixels for profile image
     },
     age: 18, // Your age
-    location: "Vietnam", // Your location
+    location: {
+      name: "Vietnam",
+      code: "vn", // Use lowercase ISO 3166-1 alpha-2 country code
+    }, // Your location
     bio: "A passionate developer who loves creating beautiful and functional web applications.", // Short bio description
   },
 
