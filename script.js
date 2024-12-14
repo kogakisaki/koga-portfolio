@@ -8,6 +8,25 @@ function init() {
   setPageIcon();
 }
 
+function parseMarkdown(text) {
+  return (
+    text
+      // Bold
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      // Italic
+      .replace(/\*(.*?)\*/g, "<em>$1</em>")
+      // Code
+      .replace(/`(.*?)`/g, "<code>$1</code>")
+      // Links
+      .replace(
+        /\[([^\]]+)\]\(([^)]+)\)/g,
+        '<a href="$2" target="_blank">$1</a>'
+      )
+      // Line breaks
+      .replace(/\n/g, "<br>")
+  );
+}
+
 function setPageIcon() {
   const canvas = document.createElement("canvas");
   canvas.width = 64;
@@ -108,10 +127,18 @@ function initProfile() {
   document.querySelector(".greeting").textContent = CONFIG.profile.greeting;
   typeText(document.querySelector(".name"), CONFIG.profile.name);
 
-  document.getElementById(
-    "basic-info"
-  ).textContent = `${CONFIG.profile.age} years old • ${CONFIG.profile.location}`;
-  document.getElementById("bio").textContent = CONFIG.profile.bio;
+  document.getElementById("bio").innerHTML = parseMarkdown(CONFIG.profile.bio);
+
+  document.getElementById("basic-info").innerHTML = `
+    <span>${CONFIG.profile.age} years old</span>
+    <span class="dot-icon">•</span>
+    <span class="location">
+      <img src="https://flagcdn.com/${CONFIG.profile.location.code}.svg" 
+           alt="${CONFIG.profile.location.name} Flag" 
+           class="flag-icon">
+      ${CONFIG.profile.location.name}
+    </span>
+  `;
 
   initHobbies();
   initLanguages();

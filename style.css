@@ -26,6 +26,10 @@
     box-shadow var(--transition-time) ease;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-color);
@@ -111,6 +115,64 @@ body {
   line-height: normal;
   font-weight: 300;
   font-size: 1.1em;
+}
+
+.bio {
+  max-width: 600px;
+  margin: 1rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.bio a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-time) ease;
+}
+
+.bio a:hover {
+  text-decoration: underline;
+}
+
+.bio code {
+  background: var(--hover-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.bio strong {
+  color: var(--primary-color);
+}
+
+#basic-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.dot-icon {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flag-icon {
+  width: 24px;
+  height: 16px;
+  border-radius: 2px;
+  object-fit: cover;
+  vertical-align: middle;
+  box-shadow: 0 1px 3px var(--shadow-color);
 }
 
 /* Theme Controls */
@@ -235,6 +297,11 @@ body {
   color: var(--primary-color);
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
+}
+
+.section h2 a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* Lists Styling */
@@ -530,6 +597,20 @@ body {
 
   .title {
     font-size: 1.75rem;
+  }
+
+  .bio {
+    font-size: 1rem;
+    margin: 0.75rem auto;
+  }
+
+  #basic-info {
+    font-size: 0.9rem;
+  }
+
+  .flag-icon {
+    width: 20px;
+    height: 14px;
   }
 
   .section h2 {
